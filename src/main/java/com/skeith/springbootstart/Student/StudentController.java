@@ -1,5 +1,6 @@
 package com.skeith.springbootstart.Student;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,8 +12,8 @@ import java.util.List;
 @RequestMapping(path = "api/students")
 public class StudentController {
 
-    public List<Student> GetStudents(){
-        return List.of(
+    public ResponseEntity<List<Student>> GetStudents(){
+        List<Student> studentList = List.of(
                 new Student(
                         1L,
                         "John Doe",
@@ -21,5 +22,6 @@ public class StudentController {
                         30
                 )
         );
+        return ResponseEntity.ok(studentList);
     }
 }
